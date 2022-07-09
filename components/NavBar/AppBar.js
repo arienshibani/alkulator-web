@@ -17,6 +17,7 @@ import Brightness7Icon from "@mui/icons-material/Brightness7";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LiquorIcon from "@mui/icons-material/Liquor";
+import Link from "@mui/material/Link";
 
 export default function SearchAppBar(props) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -82,12 +83,18 @@ export default function SearchAppBar(props) {
               <NewspaperIcon sx={{ marginLeft: "10px" }} />
             </ListItem>
 
-            <ListItem button>
-              <ListItemText primary="Github" />
-              <GitHubIcon sx={{ marginLeft: "10px" }} />
-            </ListItem>
-
           </List>
+
+          <Link
+            underline="none" color="gray"
+            href="https://github.com/arienshibani/alkulator-web">
+            <List sx={{ margin: "50px", marginTop: "50vh"  }}>
+              <ListItem button >
+                <ListItemText primary="Github" />
+                <GitHubIcon sx={{ marginLeft: "10px" }} />
+              </ListItem>
+            </List>
+          </Link>
         </Drawer>
       </AppBar>
     </Box >
