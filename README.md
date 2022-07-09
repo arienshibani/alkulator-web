@@ -10,3 +10,6 @@ A website that collects beverage and liquor prices from different Norwegian vend
 1. Clone this repository
 2. Install dependencies with `npm install`
 3. Serve the webpage locally with `npm run dev`
+
+## Want to contribute?
+Pull requests are welcome. For any questions, send me an email: aaari94@gmail.com
