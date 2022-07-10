@@ -50,8 +50,8 @@ export default function App() {
 
           <AppBar setMode={setMode} mode={mode} />
 
-          <br></br>
-          <br></br>
+          <br />
+          <br />
           <Grid />
         </ThemeProvider>
       </ColorModeContext.Provider>
