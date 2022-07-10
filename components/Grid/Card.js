@@ -5,7 +5,8 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-
+import { Tooltip } from "@mui/material";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 const bull = (
   <Box
     component="span"
@@ -15,16 +16,20 @@ const bull = (
 );
 
 const card = (
-  <React.Fragment>
+  <>
     <CardContent>
       <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                Category | Score: 420.69
+                🍺 | Score: 420.69 <Tooltip
+          sx={{ verticalAlign: "text-bottom" }}
+          title="Literpris / Alkoholprosent = Score"
+          arrow placement="right-end"><HelpOutlineIcon fontSize="font" color="inherit"/></Tooltip>
       </Typography>
       <Typography variant="h5" component="div">
-                69%{bull}33 centiliter{bull}Kr 27,00
+               Nøgne Ø Trippel
       </Typography>
-      <Typography sx={{ mb: 1.5 }} color="text.primary">
-                adjective
+
+      <Typography variant="body2" color="text.primary">
+         69%{bull}33 centiliter{bull}Kr 27,00
       </Typography>
       <Typography variant="body2">
                 Tørket frukt, malt, krydder og lys karamell.
@@ -34,12 +39,12 @@ const card = (
     <CardActions>
       <Button size="small">Kjøp på Vinmonopolet</Button>
     </CardActions>
-  </React.Fragment>
+  </>
 );
 
 export default function OutlinedCard() {
   return (
-    <Box sx={{ minWidth: 275 }}>
+    <Box sx={{ minWidth: 275, maxWidth: 500 }}>
       <Card variant="outlined">{card}</Card>
     </Box>
   );

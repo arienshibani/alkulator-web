@@ -64,33 +64,8 @@ export default function FullWidthGrid() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-        <ToggleButtonGroup
-          sx={{ height: "3.5em", marginTop: "8px" }}
-          value={alignment}
-          exclusive
-          onChange={handleAlignment}
-          aria-label="text alignment">
-          <ToggleButton value="compact" aria-label="left aligned">
-            <ViewListIcon />
-          </ToggleButton>
-          <ToggleButton value="large" aria-label="centered">
-            <ViewAgendaIcon />
-          </ToggleButton>
-        </ToggleButtonGroup>
 
-        <FormControl sx={{ m: 1, width: "120px" } }>
-          <InputLabel>Sortér på</InputLabel>
-          <Select
-            value={age}
-            label="Sortér på"
-            onChange={handleSort}
-          >
-            <MenuItem value={"Billigst"}>Billigst</MenuItem>
-            <MenuItem value={"Dyrest"}>Dyrest</MenuItem>
-          </Select>
-        </FormControl>
-
-        <FormControl sx={{ m: 1, width: "100%" } }>
+        <FormControl sx={{ m: 1, width: "25vh" } }>
           <InputLabel>Filtrer på type</InputLabel>
           <Select
             label="Filtrer på type"
@@ -108,20 +83,45 @@ export default function FullWidthGrid() {
               </MenuItem>))}
           </Select>
         </FormControl>
+
+        <FormControl sx={{ m: 1, width: "120px" } }>
+          <InputLabel>Sortér på</InputLabel>
+          <Select
+            value={age}
+            label="Sortér på"
+            onChange={handleSort}
+          >
+            <MenuItem value={"Billigst"}>Billigst</MenuItem>
+            <MenuItem value={"Dyrest"}>Dyrest</MenuItem>
+          </Select>
+        </FormControl>
+
+        <ToggleButtonGroup
+          sx={{ height: "3.5em", marginTop: "8px" }}
+          value={alignment}
+          exclusive
+          onChange={handleAlignment}
+          aria-label="text alignment">
+          <ToggleButton value="compact" aria-label="left aligned">
+            <ViewListIcon />
+          </ToggleButton>
+          <ToggleButton value="large" aria-label="centered">
+            <ViewAgendaIcon />
+          </ToggleButton>
+        </ToggleButtonGroup>
       </Box>
 
-      <Grid container spacing={5} >
-
-        <Grid item xs={6} >
+      <Grid
+        container
+        spacing={1}
+      >
+        <Grid item xs={12} md={10}>
           <Card />
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={10}>
           <Card />
         </Grid>
-        <Grid item xs={12} md={6}>
-          <Card />
-        </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={10}>
           <Card />
         </Grid>
       </Grid>
