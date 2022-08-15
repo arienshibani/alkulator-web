@@ -41,7 +41,7 @@ export default function SearchAppBar(props) {
             noWrap
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}>
-                Alkulator.no
+            Alkulator.no
           </Typography>
 
           <Typography
@@ -49,7 +49,7 @@ export default function SearchAppBar(props) {
             noWrap
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}>
-                Mest rus for pengene!
+
           </Typography>
 
           <Search>
@@ -88,7 +88,7 @@ export default function SearchAppBar(props) {
           <Link
             underline="none" color="gray"
             href="https://github.com/arienshibani/alkulator-web">
-            <List sx={{ margin: "50px", marginTop: "50vh"  }}>
+            <List sx={{ margin: "50px", marginTop: "50vh" }}>
               <ListItem button >
                 <ListItemText primary="Github" />
                 <GitHubIcon sx={{ marginLeft: "10px" }} />
