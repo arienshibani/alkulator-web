@@ -12,7 +12,7 @@ import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
 import ListItemText from "@mui/material/ListItemText";
 import OutlinedInput from "@mui/material/OutlinedInput";
-
+import Slider from '@mui/material/Slider';
 import Card from "./Card";
 
 export default function FullWidthGrid() {
