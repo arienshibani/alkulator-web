@@ -19,6 +19,8 @@ export default function FullWidthGrid() {
   const [alignment, setAlignment] = useState("large");
   const [age, setAge] = useState("Billigst");
   const [alcoholTypesSelected, setAlcoholTypesSelected] = useState([]);
+
+  // Used for alcohol type selection:
   const listOfAlcoholTypes = [
     "Øl 🍺",
     "Cider 🍏",
@@ -65,7 +67,7 @@ export default function FullWidthGrid() {
     <Box sx={{ flexGrow: 1 }}>
       <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
 
-        <FormControl sx={{ m: 1, width: "25vh" } }>
+        <FormControl sx={{ m: 1, width: "25vh" }}>
           <InputLabel>Filtrer på type</InputLabel>
           <Select
             label="Filtrer på type"
@@ -84,7 +86,7 @@ export default function FullWidthGrid() {
           </Select>
         </FormControl>
 
-        <FormControl sx={{ m: 1, width: "120px" } }>
+        <FormControl sx={{ m: 1, width: "120px" }}>
           <InputLabel>Sortér på</InputLabel>
           <Select
             value={age}
