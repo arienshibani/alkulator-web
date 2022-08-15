@@ -10,7 +10,7 @@ import Grid from "/components/Grid/Grid";
 const ColorModeContext = React.createContext({ toggleColorMode: () => { } });
 
 export default function App() {
-  const [mode, setMode] = useState("light");
+  const [mode, setMode] = useState("dark");
   const colorMode = useMemo(
     () => ({
       toggleColorMode: () => {
