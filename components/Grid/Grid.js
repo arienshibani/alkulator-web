@@ -13,12 +13,17 @@ import Checkbox from "@mui/material/Checkbox";
 import ListItemText from "@mui/material/ListItemText";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import Slider from '@mui/material/Slider';
+import Typography from '@mui/material/Typography';
+import Divider from '@mui/material/Divider';
 import Card from "./Card";
+
 
 export default function FullWidthGrid() {
   const [alignment, setAlignment] = useState("large");
-  const [age, setAge] = useState("Billigst");
+  const [sortMode, setSortMode] = useState("Billigst");
   const [alcoholTypesSelected, setAlcoholTypesSelected] = useState([]);
+  const [distributorsSelected, setDistributorsSelected] = useState(["Vinmonopolet"]);
+  const [abvPercentage, setabvPercentage] = React.useState([0, 100]);
 
   // Used for alcohol type selection:
   const listOfAlcoholTypes = [
@@ -35,6 +40,30 @@ export default function FullWidthGrid() {
     "Mjød 🐝",
     "Musserende 🍾",
     "Sake 🍶",
+  ];
+
+  const listOfDistributors = [
+    "Vinmonopolet",
+    "Meny",
+    "Joker",
+    "Oda",
+    "Gulating"
+  ];
+
+  const valueTextABVSlider = (value) => {
+    return `${value}%`;
+  }
+
+
+  const alcoholSliderMarks = [
+    {
+      value: 0,
+      label: `${abvPercentage[0]}%`,
+    },
+    {
+      value: 100,
+      label: `${abvPercentage[1]}%`,
+    },
   ];
 
   const ITEM_HEIGHT = 408;
@@ -55,17 +84,61 @@ export default function FullWidthGrid() {
     setAlcoholTypesSelected(value);
   };
 
+  const handleDistributorSelection = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setDistributorsSelected(value);
+  };
+
   const handleAlignment = (event, newAlignment) => {
     setAlignment(newAlignment);
   };
 
   const handleSort = (event) => {
-    setAge(event.target.value);
+    setSortMode(event.target.value);
+  };
+
+  const handleABVPercentageChange = (event, newValue) => {
+    setabvPercentage(newValue)
   };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+
+      <Box sx={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}>
+        <Box sx={{ m: 1, width: 200, paddingRight: "10px", paddingLeft: "10px" }}>
+          <InputLabel>
+            Alkohol %
+          </InputLabel>
+          <Slider
+            getAriaLabel={() => 'Temperature range'}
+            value={abvPercentage}
+            onChange={handleABVPercentageChange}
+            valueLabelDisplay="auto"
+            marks={alcoholSliderMarks}
+            getAriaValueText={valueTextABVSlider}
+          />
+        </Box>
+
+        <FormControl sx={{ m: 1, width: "25vh" }}>
+          <InputLabel>Filtrer På Leverandør</InputLabel>
+          <Select
+            label="Filtrer på Leverandør"
+            onChange={handleDistributorSelection}
+            multiple
+            value={distributorsSelected}
+            input={<OutlinedInput label="Filtrer på Leverandør" />}
+            renderValue={(selected) => selected.join(", ")}
+            MenuProps={MenuProps}
+          >
+            {listOfDistributors.map((alcoholType) => (
+              <MenuItem key={alcoholType} value={alcoholType}>
+                <Checkbox checked={distributorsSelected.indexOf(alcoholType) > -1} />
+                <ListItemText primary={alcoholType} />
+              </MenuItem>))}
+          </Select>
+        </FormControl>
 
         <FormControl sx={{ m: 1, width: "25vh" }}>
           <InputLabel>Filtrer på type</InputLabel>
@@ -89,7 +162,7 @@ export default function FullWidthGrid() {
         <FormControl sx={{ m: 1, width: "120px" }}>
           <InputLabel>Sortér på</InputLabel>
           <Select
-            value={age}
+            value={sortMode}
             label="Sortér på"
             onChange={handleSort}
           >
@@ -112,6 +185,8 @@ export default function FullWidthGrid() {
           </ToggleButton>
         </ToggleButtonGroup>
       </Box>
+
+      <Divider variant="middle" sx={{ marginBottom: "20px" }} />
 
       <Grid
         container
