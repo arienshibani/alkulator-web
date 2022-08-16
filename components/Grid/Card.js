@@ -66,7 +66,6 @@ const compactCard = (
 );
 
 export default function OutlinedCard(props) {
-  console.log(props);
   if (props.alignment === "compact") {
     return (
       <Box sx={{ minWidth: 275, maxWidth: 500 }}>
