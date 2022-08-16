@@ -42,7 +42,38 @@ const card = (
   </>
 );
 
-export default function OutlinedCard() {
+const compactCard = (
+  <>
+    <CardContent>
+      <Typography sx={{ fontSize: 12 }} color="text.secondary" gutterBottom>
+                🍺 | Score: 410.69 <Tooltip
+          sx={{ verticalAlign: "text-bottom" }}
+          title="Literpris / Alkoholprosent = Score"
+          arrow placement="right-end"><HelpOutlineIcon fontSize="font" color="inherit"/></Tooltip>
+      </Typography>
+      <Typography variant="h6" component="div">
+               Nøgne Ø Trippel
+      </Typography>
+
+      <Typography variant="body2" color="text.primary">
+         69%{bull}33 centiliter{bull}Kr 27,00
+      </Typography>
+    </CardContent>
+    <CardActions>
+      <Button size="small">Kjøp på Vinmonopolet</Button>
+    </CardActions>
+  </>
+);
+
+export default function OutlinedCard(props) {
+  console.log(props);
+  if (props.alignment === "compact") {
+    return (
+      <Box sx={{ minWidth: 275, maxWidth: 500 }}>
+        <Card variant="outlined">{compactCard}</Card>
+      </Box>
+    );
+  }
   return (
     <Box sx={{ minWidth: 275, maxWidth: 500 }}>
       <Card variant="outlined">{card}</Card>

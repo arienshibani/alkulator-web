@@ -12,11 +12,10 @@ import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
 import ListItemText from "@mui/material/ListItemText";
 import OutlinedInput from "@mui/material/OutlinedInput";
-import Slider from '@mui/material/Slider';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
+import Slider from "@mui/material/Slider";
+import Typography from "@mui/material/Typography";
+import Divider from "@mui/material/Divider";
 import Card from "./Card";
-
 
 export default function FullWidthGrid() {
   const [alignment, setAlignment] = useState("large");
@@ -47,13 +46,12 @@ export default function FullWidthGrid() {
     "Meny",
     "Joker",
     "Oda",
-    "Gulating"
+    "Gulating",
   ];
 
   const valueTextABVSlider = (value) => {
     return `${value}%`;
-  }
-
+  };
 
   const alcoholSliderMarks = [
     {
@@ -100,7 +98,7 @@ export default function FullWidthGrid() {
   };
 
   const handleABVPercentageChange = (event, newValue) => {
-    setabvPercentage(newValue)
+    setabvPercentage(newValue);
   };
 
   return (
@@ -112,7 +110,7 @@ export default function FullWidthGrid() {
             Alkohol %
           </InputLabel>
           <Slider
-            getAriaLabel={() => 'Temperature range'}
+            getAriaLabel={() => "Alcohol By Volume filter"}
             value={abvPercentage}
             onChange={handleABVPercentageChange}
             valueLabelDisplay="auto"
@@ -193,13 +191,13 @@ export default function FullWidthGrid() {
         spacing={1}
       >
         <Grid item xs={12} md={10}>
-          <Card />
+          <Card alignment={alignment}/>
         </Grid>
         <Grid item xs={12} md={10}>
-          <Card />
+          <Card alignment={alignment}/>
         </Grid>
         <Grid item xs={12} md={10}>
-          <Card />
+          <Card alignment={alignment}/>
         </Grid>
       </Grid>
 
