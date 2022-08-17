@@ -49,7 +49,6 @@ const card = (props) => {
 };
 
 export default function OutlinedCard(props) {
-  console.log(props);
   return (
     <Box sx={{ minWidth: 275, maxWidth: 500 }}>
       <Card variant="outlined">{card(props)}</Card>
