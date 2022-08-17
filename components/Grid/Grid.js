@@ -13,7 +13,6 @@ import Checkbox from "@mui/material/Checkbox";
 import ListItemText from "@mui/material/ListItemText";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import Slider from "@mui/material/Slider";
-import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import Card from "./Card";
 
@@ -23,6 +22,80 @@ export default function FullWidthGrid() {
   const [alcoholTypesSelected, setAlcoholTypesSelected] = useState([]);
   const [distributorsSelected, setDistributorsSelected] = useState(["Vinmonopolet"]);
   const [abvPercentage, setabvPercentage] = React.useState([0, 100]);
+  const [searchResult, setSearchResult] = useState([
+    { score: 23.2,
+      abv: "11%",
+      description: "Nice taste",
+      volume: "10cl",
+      title: "Dyreste Pils",
+      price: "100",
+      symbol: "🍺",
+      distributor: "Meny",
+    },
+    { score: 16.2,
+      abv: "14%",
+      description: "Bad taste, tastes like jank",
+      volume: "10cl",
+      title: "Dyreste Rødvin 6",
+      price: "100",
+      symbol: "🍷",
+      distributor: "Vinmonopolet",
+    },
+    { score: 15.2,
+      abv: "14%",
+      description: "Bad taste, tastes like jank",
+      volume: "10cl",
+      title: "Bra Rødvin 5",
+      price: "100",
+      symbol: "🍷",
+      distributor: "Vinmonopolet",
+    },
+    { score: 14.2,
+      abv: "14%",
+      description: "Bad taste, tastes like jank",
+      volume: "10cl",
+      title: "Bra Rødvin 4",
+      price: "100",
+      symbol: "🍷",
+      distributor: "Vinmonopolet",
+    },
+    { score: 13.2,
+      abv: "14%",
+      description: "Bad taste, tastes like jank",
+      volume: "10cl",
+      title: "Bra Rødvin 3",
+      price: "100",
+      symbol: "🍷",
+      distributor: "Meny",
+    },
+    { score: 12.2,
+      abv: "9%",
+      description: "Bad taste, tastes like jank",
+      volume: "10cl",
+      title: "Billigste Cider",
+      price: "100",
+      symbol: "🍏",
+      distributor: "Meny",
+    },
+    { score: 11.2,
+      abv: "14%",
+      description: "Bad taste, tastes like jank",
+      volume: "10cl",
+      title: "Billigste Rødvin",
+      price: "100",
+      symbol: "🍷",
+      distributor: "Vinmonopolet",
+    },
+    { score: 10.0,
+      abv: "54%",
+      description: "Bad taste, tastes like jank",
+      volume: "10cl",
+      title: "Billigste Sprit",
+      price: "200",
+      symbol: "🥃",
+      distributor: "Vinmonopolet",
+    },
+  ]);
 
   // Used for alcohol type selection:
   const listOfAlcoholTypes = [
@@ -95,6 +168,11 @@ export default function FullWidthGrid() {
 
   const handleSort = (event) => {
     setSortMode(event.target.value);
+    if (sortMode === "Billigst") {
+      searchResult.sort((a, b) => (a.score < b.score) ? 1 : -1);
+    } else {
+      searchResult.sort((a, b) => (a.score > b.score) ? 1 : -1);
+    }
   };
 
   const handleABVPercentageChange = (event, newValue) => {
@@ -190,15 +268,19 @@ export default function FullWidthGrid() {
         container
         spacing={1}
       >
-        <Grid item xs={12} md={10}>
-          <Card alignment={alignment} score={23.2} abv={"11%"} volume={"10cl"} title={"God Pils"} price={"100"} symbol={"🍺"} distributor={"Meny"} />
-        </Grid>
-        <Grid item xs={12} md={10}>
-          <Card alignment={alignment}/>
-        </Grid>
-        <Grid item xs={12} md={10}>
-          <Card alignment={alignment}/>
-        </Grid>
+        {searchResult
+          .map((item) => (
+            <Grid key={item.title} item xs={12} md={6}>
+              <Card alignment={alignment}
+                score={item.score}
+                abv={item.abv}
+                description={item.description}
+                volume={item.volume}
+                title={item.title}
+                price={item.price}
+                symbol={item.symbol}
+                distributor={item.distributor} />
+            </Grid>))}
       </Grid>
 
     </Box>
