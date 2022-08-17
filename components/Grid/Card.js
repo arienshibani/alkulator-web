@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Tooltip } from "@mui/material";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+
 const bull = (
   <Box
     component="span"
@@ -15,67 +16,43 @@ const bull = (
   </Box>
 );
 
-const card = (
-  <>
+const card = (props) => {
+  return (<>
     <CardContent>
-      <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                🍺 | Score: 420.69 <Tooltip
-          sx={{ verticalAlign: "text-bottom" }}
+      <Typography sx={{ fontSize: (props.alignment === "large" ? 14 : 12) }} color="text.secondary" gutterBottom>
+        {props.symbol} | Score: {props.score} <Tooltip sx={{ verticalAlign: "text-bottom" }}
           title="Literpris / Alkoholprosent = Score"
           arrow placement="right-end"><HelpOutlineIcon fontSize="font" color="inherit"/></Tooltip>
       </Typography>
-      <Typography variant="h5" component="div">
-               Nøgne Ø Trippel
+
+      <Typography variant={(props.alignment === "large" ? "h5" : "h6")} component="div">
+        {props.title}
       </Typography>
 
       <Typography variant="body2" color="text.primary">
-         69%{bull}33 centiliter{bull}Kr 27,00
-      </Typography>
-      <Typography variant="body2">
-                Tørket frukt, malt, krydder og lys karamell.
-        <br />
-      </Typography>
-    </CardContent>
-    <CardActions>
-      <Button size="small">Kjøp på Vinmonopolet</Button>
-    </CardActions>
-  </>
-);
-
-const compactCard = (
-  <>
-    <CardContent>
-      <Typography sx={{ fontSize: 12 }} color="text.secondary" gutterBottom>
-                🍺 | Score: 410.69 <Tooltip
-          sx={{ verticalAlign: "text-bottom" }}
-          title="Literpris / Alkoholprosent = Score"
-          arrow placement="right-end"><HelpOutlineIcon fontSize="font" color="inherit"/></Tooltip>
-      </Typography>
-      <Typography variant="h6" component="div">
-               Nøgne Ø Trippel
+        {props.abv} {bull} {props.volume} {bull}Kr {props.price},-
       </Typography>
 
-      <Typography variant="body2" color="text.primary">
-         69%{bull}33 centiliter{bull}Kr 27,00
-      </Typography>
+      {props.alignment === "large" &&
+        <Typography variant="body2">
+          {props.description}
+          <br />
+        </Typography>
+      }
+
     </CardContent>
+
     <CardActions>
-      <Button size="small">Kjøp på Vinmonopolet</Button>
+      <Button size="small">Kjøp på {props.distributor}</Button>
     </CardActions>
-  </>
-);
+  </>);
+};
 
 export default function OutlinedCard(props) {
-  if (props.alignment === "compact") {
-    return (
-      <Box sx={{ minWidth: 275, maxWidth: 500 }}>
-        <Card variant="outlined">{compactCard}</Card>
-      </Box>
-    );
-  }
+  console.log(props);
   return (
     <Box sx={{ minWidth: 275, maxWidth: 500 }}>
-      <Card variant="outlined">{card}</Card>
+      <Card variant="outlined">{card(props)}</Card>
     </Box>
   );
 }

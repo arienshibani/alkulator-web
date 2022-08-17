@@ -191,7 +191,7 @@ export default function FullWidthGrid() {
         spacing={1}
       >
         <Grid item xs={12} md={10}>
-          <Card alignment={alignment}/>
+          <Card alignment={alignment} score={23.2} abv={"11%"} volume={"10cl"} title={"God Pils"} price={"100"} symbol={"🍺"} distributor={"Meny"} />
         </Grid>
         <Grid item xs={12} md={10}>
           <Card alignment={alignment}/>
