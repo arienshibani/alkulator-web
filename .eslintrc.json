@@ -2,48 +2,48 @@
   "extends": "next/core-web-vitals",
   "rules": {
     "max-len": [
-      "error",
+      "warn",
       {
         "code": 200,
         "ignoreStrings": true
       }
     ],
     "array-bracket-spacing": [
-      "error"
+      "warn"
     ],
     "comma-dangle": [
-      "error",
+      "warn",
       "always-multiline"
     ],
     "comma-spacing": [
-      "error"
+      "warn"
     ],
     "computed-property-spacing": [
-      "error"
+      "warn"
     ],
     "consistent-return": 2,
     "dot-notation": [
-      "error"
+      "warn"
     ],
     "eol-last": [
-      "error"
+      "warn"
     ],
     "func-call-spacing": [
-      "error"
+      "warn"
     ],
     "key-spacing": [
-      "error"
+      "warn"
     ],
     "keyword-spacing": [
-      "error"
+      "warn"
     ],
     "indent": [
-      "error",
+      "warn",
       2
     ],
     "no-else-return": 1,
     "no-unused-vars": [
-      "error",
+      "warn",
       {
         "vars": "all",
         "args": "after-used",
@@ -51,7 +51,7 @@
       }
     ],
     "no-multiple-empty-lines": [
-      "error",
+      "warn",
       {
         "max": 1,
         "maxEOF": 0,
@@ -59,49 +59,50 @@
       }
     ],
     "no-sequences": [
-      "error"
+      "warn"
     ],
     "no-trailing-spaces": [
-      "error"
+      "warn"
     ],
     "no-var": [
-      "error"
+      "warn"
     ],
     "no-undef": [
-      "error"
+      "warn"
     ],
     "no-useless-escape": [
-      "error"
+      "warn"
     ],
     "object-curly-spacing": [
-      "error",
+      "warn",
       "always"
     ],
     "padded-blocks": [
-      "error",
+      "warn",
       "never"
     ],
     "quotes": [
-      "error",
+      "warn",
       "double"
     ],
     "require-await": [
-      "error"
+      "warn"
     ],
     "semi": [
       1,
       "always"
     ],
     "space-before-blocks": [
-      "error",
+      "warn",
       "always"
     ],
     "space-in-parens": [
-      "error"
+      "warn"
     ],
     "space-unary-ops": 2,
     "space-infix-ops": [
-      "error"
-    ]
+      "warn"
+    ],
+    "no-console": "warn"
   }
 }
