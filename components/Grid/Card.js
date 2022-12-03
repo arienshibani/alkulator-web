@@ -16,21 +16,44 @@ const bull = (
   </Box>
 );
 
+const formatCategory = (category) => {
+  const listOfAlcoholTypes = [
+    "Øl 🍺",
+    "Cider 🍏",
+    "Brennevin 🥃",
+    "Rødvin 🍷",
+    "Hvitvin 🥂",
+    "Sterkvin 🍾",
+    "Rosévin 🍷",
+    "Fruktvin 🍹",
+    "Aromatisert vin 🌸",
+    "Perlende 🍸",
+    "Mjød 🐝",
+    "Musserende 🍾",
+    "Sake 🍶",
+  ];
+
+  return listOfAlcoholTypes[category];
+};
+
 const card = (props) => {
   return (<>
     <CardContent>
       <Typography sx={{ fontSize: (props.alignment === "large" ? 14 : 12) }} color="text.secondary" gutterBottom>
-        {props.symbol} | Score: {props.score} <Tooltip sx={{ verticalAlign: "text-bottom" }}
+        {(props.alignment === "large" ? props.category + formatCategory(props.cate) : props.category)} | Score: {props.score} <Tooltip sx={{ verticalAlign: "text-bottom" }}
           title="Literpris / Alkoholprosent = Score"
           arrow placement="right-end"><HelpOutlineIcon fontSize="font" color="inherit"/></Tooltip>
       </Typography>
 
-      <Typography variant={(props.alignment === "large" ? "h5" : "h6")} component="div">
-        {props.title}
+      <Typography sx={{
+        whiteSpace: (props.alignment === "large" ? "null" : "nowrap"),
+        textOverflow: (props.alignment === "large" ? "null" : "ellipsis"),
+        overflow: (props.alignment === "large" ? "null" : "hidden") }} variant={(props.alignment === "large" ? "h5" : "h6")} component="div">
+        {props.productName}
       </Typography>
 
       <Typography variant="body2" color="text.primary">
-        {props.abv} {bull} {props.volume} {bull}Kr {props.price},-
+        {props.alcoholPercentage} {bull} {props.volume} {bull} {props.price},-
       </Typography>
 
       {props.alignment === "large" &&
@@ -43,14 +66,14 @@ const card = (props) => {
     </CardContent>
 
     <CardActions>
-      <Button size="small">Kjøp på {props.distributor}</Button>
+      <Button size="small" href={props.link}>Kjøp på {props.distributor}</Button>
     </CardActions>
   </>);
 };
 
 export default function OutlinedCard(props) {
   return (
-    <Box sx={{ minWidth: 275, maxWidth: 500 }}>
+    <Box sx={{ minWidth: 475, maxWidth: (props.alignment === "large" ? 700 : 400)  }}>
       <Card variant="outlined">{card(props)}</Card>
     </Box>
   );

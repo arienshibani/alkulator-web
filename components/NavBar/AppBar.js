@@ -17,6 +17,7 @@ import Brightness7Icon from "@mui/icons-material/Brightness7";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LiquorIcon from "@mui/icons-material/Liquor";
+import CalculateIcon from "@mui/icons-material/Calculate";
 import Link from "@mui/material/Link";
 
 export default function SearchAppBar(props) {
@@ -41,7 +42,7 @@ export default function SearchAppBar(props) {
             noWrap
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}>
-            Alkulator.no
+            Alkulator
           </Typography>
 
           <Typography
@@ -74,13 +75,18 @@ export default function SearchAppBar(props) {
         <Drawer open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} >
           <List sx={{ margin: "50px" }}>
             <ListItem button>
-              <ListItemText primary="Alkulator" />
+              <ListItemText primary="Hjem" />
               <LiquorIcon sx={{ marginLeft: "10px" }} />
             </ListItem>
 
             <ListItem button>
               <ListItemText primary="Nyheter" />
               <NewspaperIcon sx={{ marginLeft: "10px" }} />
+            </ListItem>
+
+            <ListItem button>
+              <ListItemText primary="Alkulator" />
+              <CalculateIcon sx={{ marginLeft: "10px" }} />
             </ListItem>
 
           </List>

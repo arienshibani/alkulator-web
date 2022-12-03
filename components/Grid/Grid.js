@@ -23,77 +23,30 @@ export default function FullWidthGrid() {
   const [distributorsSelected, setDistributorsSelected] = useState(["Vinmonopolet"]);
   const [abvPercentage, setabvPercentage] = React.useState([0, 100]);
   const [searchResult, setSearchResult] = useState([
-    { score: 23.2,
-      abv: "11%",
-      description: "Nice taste",
-      volume: "10cl",
-      title: "Dyreste Pils",
-      price: "100",
-      symbol: "🍺",
-      distributor: "Meny",
-    },
-    { score: 16.2,
-      abv: "14%",
-      description: "Bad taste, tastes like jank",
-      volume: "10cl",
-      title: "Dyreste Rødvin 6",
-      price: "100",
-      symbol: "🍷",
+
+    {
+      productName: "Northern Monk Jule Heathen Festive Milkshake IPA",
+      category: "Øl",
+      price: "Kr 87,20",
+      volume: "44 centiliter",
+      alcoholPercentage: "7.2%",
+      score: 27.525,
+      thumbnail: "https://bilder.vinmonopolet.no/cache/96x96-0/13863902-1.jpg",
+      altText: "Northern Monk Jule Heathen Festive Milkshake IPA",
+      link: "https://www.vinmonopolet.no/p/13863902",
       distributor: "Vinmonopolet",
     },
-    { score: 15.2,
-      abv: "14%",
-      description: "Bad taste, tastes like jank",
-      volume: "10cl",
-      title: "Bra Rødvin 5",
-      price: "100",
-      symbol: "🍷",
-      distributor: "Vinmonopolet",
-    },
-    { score: 14.2,
-      abv: "14%",
-      description: "Bad taste, tastes like jank",
-      volume: "10cl",
-      title: "Bra Rødvin 4",
-      price: "100",
-      symbol: "🍷",
-      distributor: "Vinmonopolet",
-    },
-    { score: 13.2,
-      abv: "14%",
-      description: "Bad taste, tastes like jank",
-      volume: "10cl",
-      title: "Bra Rødvin 3",
-      price: "100",
-      symbol: "🍷",
-      distributor: "Meny",
-    },
-    { score: 12.2,
-      abv: "9%",
-      description: "Bad taste, tastes like jank",
-      volume: "10cl",
-      title: "Billigste Cider",
-      price: "100",
-      symbol: "🍏",
-      distributor: "Meny",
-    },
-    { score: 11.2,
-      abv: "14%",
-      description: "Bad taste, tastes like jank",
-      volume: "10cl",
-      title: "Billigste Rødvin",
-      price: "100",
-      symbol: "🍷",
-      distributor: "Vinmonopolet",
-    },
-    { score: 10.0,
-      abv: "54%",
-      description: "Bad taste, tastes like jank",
-      volume: "10cl",
-      title: "Billigste Sprit",
-      price: "200",
-      symbol: "🥃",
-      distributor: "Vinmonopolet",
+    {
+      productName: "BRØL",
+      category: "Øl",
+      price: "Kr 40,00",
+      volume: "33 centiliter",
+      alcoholPercentage: "4.70%",
+      score: 27.525,
+      thumbnail: "https://bilder.kolonial.no/local_products/8870e654-2dd9-41fa-a91d-2d62d6f46273.jpeg?auto=format&fit=max&w=106&s=56917dbfabd0a395000280b32e500fef",
+      altText: "BRØL",
+      link: "https://oda.com/no/products/40208-oslo-brewing-company-brol/",
+      distributor: "Oda",
     },
   ]);
 
@@ -270,19 +223,21 @@ export default function FullWidthGrid() {
       >
         {searchResult
           .map((item) => (
-            <Grid key={item.title} item xs={12} md={6}>
+            <Grid key={item.productName} item xs={12} md={10}>
               <Card alignment={alignment}
                 score={item.score}
-                abv={item.abv}
+                alcoholPercentage={item.alcoholPercentage}
                 description={item.description}
+                thumbnail={item.thumbnail}
+                altText={item.altText}
+                link={item.link}
                 volume={item.volume}
-                title={item.title}
+                productName={item.productName}
                 price={item.price}
-                symbol={item.symbol}
+                category={item.category}
                 distributor={item.distributor} />
             </Grid>))}
       </Grid>
-
     </Box>
   );
 }

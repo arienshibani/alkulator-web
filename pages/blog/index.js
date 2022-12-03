@@ -24,7 +24,7 @@ export default function FirstPost() {
       <Head>
         <title>Alkulator.no</title>
         <meta property="og:title" content="Alkulator.no" key="title" />
-        <meta charset="UTF-8" />
+        <meta charSet="UTF-8" />
         <meta name="description" content="Mer rus for pengene." />
         <meta name="keywords" content="Vinmonopolet, Alkiskalkis, Alkulator" />
         <meta name="author" content="Arien Shibani" />
