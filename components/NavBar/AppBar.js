@@ -50,7 +50,7 @@ export default function SearchAppBar(props) {
             variant="h6"
             noWrap
             component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "none", lg: "block" } }}>
+            sx={{ alignText: "center", flexGrow: 1, display: { xs: "none", sm: "none", lg: "block" } }}>
             🥳<i> Mest rus for pengene! </i> 🎉
           </Typography>
           <Typography
