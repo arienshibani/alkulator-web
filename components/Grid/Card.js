@@ -16,31 +16,11 @@ const bull = (
   </Box>
 );
 
-const formatCategory = (category) => {
-  const listOfAlcoholTypes = [
-    "Øl 🍺",
-    "Cider 🍏",
-    "Brennevin 🥃",
-    "Rødvin 🍷",
-    "Hvitvin 🥂",
-    "Sterkvin 🍾",
-    "Rosévin 🍷",
-    "Fruktvin 🍹",
-    "Aromatisert vin 🌸",
-    "Perlende 🍸",
-    "Mjød 🐝",
-    "Musserende 🍾",
-    "Sake 🍶",
-  ];
-
-  return listOfAlcoholTypes[category];
-};
-
 const card = (props) => {
   return (<>
     <CardContent>
       <Typography sx={{ fontSize: (props.alignment === "large" ? 14 : 12) }} color="text.secondary" gutterBottom>
-        {(props.alignment === "large" ? props.category + formatCategory(props.cate) : props.category)} | Score: {props.score} <Tooltip sx={{ verticalAlign: "text-bottom" }}
+        {props.category} | Score: {props.score} <Tooltip sx={{ verticalAlign: "text-bottom" }}
           title="Literpris / Alkoholprosent = Score"
           arrow placement="right-end"><HelpOutlineIcon fontSize="font" color="inherit"/></Tooltip>
       </Typography>

@@ -22,50 +22,45 @@ export default function FullWidthGrid() {
   const [sortMode, setSortMode] = useState("Billigst");
   const [alcoholTypesSelected, setAlcoholTypesSelected] = useState([]);
   const [distributorsSelected, setDistributorsSelected] = useState(["Vinmonopolet"]);
-  const [abvPercentage, setabvPercentage] = React.useState([0, 100]);
-  const [searchResult, setSearchResult] = useState([
+  const [abvPercentage, setabvPercentage] = React.useState([0, 60]);
+  const [searchResult, setSearchResult] = useState([]);
 
-    {
-      productName: "Northern Monk Jule Heathen Festive Milkshake IPA",
-      category: "Øl",
-      price: "Kr 87,20",
-      volume: "44 centiliter",
-      alcoholPercentage: "7.2%",
-      score: 27.525,
-      thumbnail: "https://bilder.vinmonopolet.no/cache/96x96-0/13863902-1.jpg",
-      altText: "Northern Monk Jule Heathen Festive Milkshake IPA",
-      link: "https://www.vinmonopolet.no/p/13863902",
-      distributor: "Vinmonopolet",
-    },
-    {
-      productName: "BRØL",
-      category: "Øl",
-      price: "Kr 40,00",
-      volume: "33 centiliter",
-      alcoholPercentage: "4.70%",
-      score: 27.525,
-      thumbnail: "https://bilder.kolonial.no/local_products/8870e654-2dd9-41fa-a91d-2d62d6f46273.jpeg?auto=format&fit=max&w=106&s=56917dbfabd0a395000280b32e500fef",
-      altText: "BRØL",
-      link: "https://oda.com/no/products/40208-oslo-brewing-company-brol/",
-      distributor: "Oda",
-    },
-  ]);
+  console.log(alcoholTypesSelected);
+
+  const handleSearch = async () => {
+    try {
+      let response = await fetch(
+        `/api/drinks?category=${alcoholTypesSelected}`,
+        {
+          method: "GET",
+          headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      response = await response.json();
+      setSearchResult(response);
+    } catch (error) {
+      console.error("An error occured while fetching data", error);
+    }
+  };
 
   // Used for alcohol type selection:
   const listOfAlcoholTypes = [
-    "Øl 🍺",
-    "Cider 🍏",
-    "Brennevin 🥃",
-    "Rødvin 🍷",
-    "Hvitvin 🥂",
-    "Sterkvin 🍾",
-    "Rosévin 🍷",
-    "Fruktvin 🍹",
-    "Aromatisert vin 🌸",
-    "Perlende 🍸",
-    "Mjød 🐝",
-    "Musserende 🍾",
-    "Sake 🍶",
+    "Øl",
+    "Cider",
+    "Brennevin",
+    "Rødvin",
+    "Hvitvin",
+    "Sterkvin",
+    "Rosévin",
+    "Fruktvin",
+    "Aromatisert vin",
+    "Perlende",
+    "Mjød",
+    "Musserende",
+    "Sake",
   ];
 
   const listOfDistributors = [
@@ -107,6 +102,7 @@ export default function FullWidthGrid() {
       target: { value },
     } = event;
     setAlcoholTypesSelected(value);
+    handleSearch();
   };
 
   const handleDistributorSelection = (event) => {

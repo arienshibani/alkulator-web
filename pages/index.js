@@ -1,6 +1,4 @@
 import React, { useState, useMemo } from "react";
-import clientPromise from "../lib/MongoClient";
-
 import Head from "next/head";
 import { yellow, blue } from "@mui/material/colors";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
@@ -11,9 +9,8 @@ import Grid from "/components/Grid/Grid";
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => { } });
 
-export default function App({ data }) {
-  // TODO: Create functions that connect the front-end filter components into actual back-end mongoDB querries.
-  console.log(data);
+export default function App() {
+  // TODO: Create functions that connect the front-end filter components into actual back-end mongoDB queries.
 
   const [mode, setMode] = useState("dark");
   const colorMode = useMemo(
@@ -68,24 +65,4 @@ export default function App({ data }) {
       `}</style>
     </>
   );
-}
-
-export async function getServerSideProps() {
-  try {
-    const client = await clientPromise;
-    const database = client.db("vinmonopolet");
-    const drinks = await database.collection("records")
-      .find({ category: "Øl" })
-      .limit(50)
-      .toArray();
-
-    return {
-      props: { data: JSON.parse(JSON.stringify(drinks)) },
-    };
-  } catch (e) {
-    console.error(e);
-  }
-  return {
-    props: { data: "BEANS" },
-  };
 }
