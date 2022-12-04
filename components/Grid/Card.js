@@ -46,7 +46,7 @@ const card = (props) => {
     </CardContent>
 
     <CardActions>
-      <Button size="small" href={props.link}>Kjøp på {props.distributor}</Button>
+      <Button size="small" href={props.link}>Kjøp hos {props?.distributor || "Vinmonopolet"}</Button>
     </CardActions>
   </>);
 };
