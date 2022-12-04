@@ -20,6 +20,8 @@ import LiquorIcon from "@mui/icons-material/Liquor";
 import CalculateIcon from "@mui/icons-material/Calculate";
 import Link from "@mui/material/Link";
 
+import NextLink from "next/link";
+
 export default function SearchAppBar(props) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const prevMode = props.mode;
@@ -42,9 +44,15 @@ export default function SearchAppBar(props) {
             noWrap
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}>
-            Alkulator
+            Alkulator.no
           </Typography>
-
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ flexGrow: 1, display: { xs: "none", sm: "none", lg: "block" } }}>
+            🥳<i> Mest rus for pengene! </i> 🎉
+          </Typography>
           <Typography
             variant="h6"
             noWrap
@@ -74,21 +82,26 @@ export default function SearchAppBar(props) {
 
         <Drawer open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} >
           <List sx={{ margin: "50px" }}>
-            <ListItem button>
-              <ListItemText primary="Hjem" />
-              <LiquorIcon sx={{ marginLeft: "10px" }} />
-            </ListItem>
+            <NextLink href="/">
+              <ListItem button>
+                <ListItemText primary="Hjem" />
+                <LiquorIcon sx={{ marginLeft: "10px" }} />
+              </ListItem>
+            </NextLink>
 
-            <ListItem button>
-              <ListItemText primary="Nyheter" />
-              <NewspaperIcon sx={{ marginLeft: "10px" }} />
-            </ListItem>
+            <NextLink href="/blog">
+              <ListItem button>
+                <ListItemText primary="Nyheter" />
+                <NewspaperIcon sx={{ marginLeft: "10px" }} />
+              </ListItem>
+            </NextLink>
 
-            <ListItem button>
-              <ListItemText primary="Alkulator" />
-              <CalculateIcon sx={{ marginLeft: "10px" }} />
-            </ListItem>
-
+            <NextLink href="/alkuler">
+              <ListItem button>
+                <ListItemText primary="Alkulator" />
+                <CalculateIcon sx={{ marginLeft: "10px" }} />
+              </ListItem>
+            </NextLink>
           </List>
 
           <Link

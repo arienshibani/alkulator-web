@@ -25,8 +25,6 @@ export default function FullWidthGrid() {
   const [abvPercentage, setabvPercentage] = React.useState([0, 60]);
   const [searchResult, setSearchResult] = useState([]);
 
-  console.log(alcoholTypesSelected);
-
   const handleSearch = async () => {
     try {
       let response = await fetch(

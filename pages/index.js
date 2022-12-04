@@ -12,7 +12,7 @@ const ColorModeContext = React.createContext({ toggleColorMode: () => { } });
 export default function App() {
   // TODO: Create functions that connect the front-end filter components into actual back-end mongoDB queries.
 
-  const [mode, setMode] = useState("dark");
+  const [mode, setMode] = useState("light");
   const colorMode = useMemo(
     () => ({
       toggleColorMode: () => {

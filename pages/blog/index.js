@@ -15,7 +15,7 @@ const renderBlogPost = (title, content) => {
 };
 
 export default function BlogPost(posts) {
-  const [mode, setMode] = useState("dark");
+  const [mode, setMode] = useState("light");
   const colorMode = useMemo(
     () => ({
       toggleColorMode: () => {
@@ -67,7 +67,7 @@ export default function BlogPost(posts) {
 
 export async function getServerSideProps() {
   try {
-    let response = await fetch("http://localhost:3001/api/blog/getPosts");
+    let response = await fetch("http://localhost:3000/api/blog/getPosts");
     let posts = await response.json();
 
     return {

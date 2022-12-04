@@ -4,7 +4,7 @@ const addPost = async (req, res) => {
   try {
     const client = await clientPromise;
     const db = client.db("alkulatorBlog");
-    const { title, content } = req.body;
+    const { title, content, author, timestamp } = req.body;
 
     const post = await db.collection("posts").insertOne({
       title,
