@@ -19,7 +19,8 @@
         "pages/api/drinks",
         "pages/blog",
         "pages/donate",
-        "lib/MongoClient.js"
+        "lib/MongoClient.js",
+        "pages/blog"
     ],
     "conventionalCommits.emojiFormat": "emoji"
 }
