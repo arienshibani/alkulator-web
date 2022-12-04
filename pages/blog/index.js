@@ -18,7 +18,7 @@ export default function RenderBlog(blogPostsFromDB) {
     palette: {
       mode,
       primary: {
-        main: green[200],
+        main: blue[200],
       },
       secondary: {
         main: yellow[700],

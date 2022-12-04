@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import { ToggleButtonGroup } from "@mui/material";
+import { ToggleButtonGroup, Typography } from "@mui/material";
 import ViewAgendaIcon from "@mui/icons-material/ViewAgenda";
 import ViewListIcon from "@mui/icons-material/ViewList";
 import ToggleButton from "@mui/material/ToggleButton";
@@ -128,9 +128,8 @@ export default function FullWidthGrid() {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-
-      <Box sx={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}>
+    <Box sx={{ flexGrow: 1, display: "grid", gridAutoFlow: "column" }} >
+      <Box sx={{ display: "flex", flexDirection: "column", paddingLeft: "5rem" }} >
         <Box sx={{ m: 1, width: 200, paddingRight: "10px", paddingLeft: "10px" }}>
           <InputLabel>
             Alkohol %
@@ -210,13 +209,12 @@ export default function FullWidthGrid() {
         </ToggleButtonGroup>
       </Box>
 
-      <Divider variant="middle" sx={{ marginBottom: "20px" }} />
-
       <Grid
         container
-        spacing={1}
-        sx={{ justifyContent: "center", display: "flex" }}
+        spacing={5}
+        sx={{ justifyContent: "center", display: "flex", margin: "auto" }}
       >
+
         {searchResult
           .map((item) => (
             <Grid key={item.productName} item xs={12} md={10}>
