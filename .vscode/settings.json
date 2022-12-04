@@ -1,0 +1,25 @@
+{
+    "workbench.colorCustomizations": {
+        "titleBar.inactiveBackground": "#00e1ff",
+        "titleBar.activeBackground": "#00e1ff",
+        "titleBar.inactiveForeground": "#000000",
+        "titleBar.activeForeground": "#000000"
+    },
+    "cSpell.words": [
+        "hubspot",
+        "statistica",
+    ],
+    "conventionalCommits.scopes": [
+        "components",
+        "components/grid",
+        "components/card",
+        "components/navbar",
+        "pages/",
+        "pages/api",
+        "pages/api/drinks",
+        "pages/blog",
+        "pages/donate",
+        "lib/MongoClient.js"
+    ],
+    "conventionalCommits.emojiFormat": "emoji"
+}
