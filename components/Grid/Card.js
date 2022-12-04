@@ -20,7 +20,7 @@ const card = (props) => {
   return (<>
     <CardContent>
       <Typography sx={{ fontSize: (props.alignment === "large" ? 14 : 12) }} color="text.secondary" gutterBottom>
-        {props.category} | Score: {props.score} <Tooltip sx={{ verticalAlign: "text-bottom" }}
+        {props.category} | Score: {Math.round((Number(props.score) + Number.EPSILON) * 100) / 100} <Tooltip sx={{ verticalAlign: "text-bottom" }}
           title="Literpris / Alkoholprosent = Score"
           arrow placement="right-end"><HelpOutlineIcon fontSize="font" color="inherit"/></Tooltip>
       </Typography>
