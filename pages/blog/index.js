@@ -2,34 +2,23 @@ import * as React from "react";
 import Head from "next/head";
 import { yellow, blue } from "@mui/material/colors";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { useState, useMemo } from "react";
+import { useState } from "react";
+
 // Components
+import BlogPost from "../../components/BlogPost/BlogPost";
 import AppBar from "/components/NavBar/AppBar";
+import { Box } from "@mui/material";
 
-const renderBlogPost = (title, content) => {
-  return (
-    <div>
-      <b>{title}</b>
-      <p>{content}</p>
-    </div>);
-};
-
-export default function BlogPost(posts) {
+export default function RenderBlog(blogPostsFromDB) {
   const [mode, setMode] = useState("light");
-  const colorMode = useMemo(
-    () => ({
-      toggleColorMode: () => {
-        setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
-      },
-    }),
-    [],
-  );
+
+  console.log(blogPostsFromDB);
 
   const theme = createTheme({
     palette: {
       mode,
       primary: {
-        main: blue[200],
+        main: green[200],
       },
       secondary: {
         main: yellow[700],
@@ -52,9 +41,27 @@ export default function BlogPost(posts) {
         <AppBar setMode={setMode} mode={mode} />
       </ThemeProvider>
 
-      <div>
-        {posts.posts.map(el => renderBlogPost(el.content, el.title))}
-      </div>
+      <Box sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        padding: "5rem",
+        gap: "1rem",
+
+      }}>
+
+        {blogPostsFromDB.blogPostsFromDB.map((post) => {
+          return (<BlogPost
+            key={post._id}
+            content={post.content}
+            title={post.title}
+            url={post.url}
+            timestamp={post.timestamp}
+            img={post.img}
+            subTitle={post.subTitle}/>);
+        })}
+
+      </Box>
 
       <style jsx global>{`
         body {
@@ -68,10 +75,10 @@ export default function BlogPost(posts) {
 export async function getServerSideProps() {
   try {
     let response = await fetch("http://localhost:3000/api/blog/getPosts");
-    let posts = await response.json();
+    let blogPostsFromDB = await response.json();
 
     return {
-      props: { posts: JSON.parse(JSON.stringify(posts)) },
+      props: { blogPostsFromDB: JSON.parse(JSON.stringify(blogPostsFromDB)) },
     };
   } catch (e) {
     console.error(e);

@@ -164,7 +164,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const generateSuggestion = () => {
   const listOfSuggestions = ["Smirnoff", "Jack Daniels", "Jelzin Vodka", "Stolichnaya", "Bare Øl"];
-  return listOfSuggestions[Math.floor(Math.random() * listOfSuggestions.length)];
+  return listOfSuggestions[Math.floor(Math.random() * listOfSuggestions.length - 1)];
 };
 
 const suggestions = generateSuggestion();

@@ -215,11 +215,13 @@ export default function FullWidthGrid() {
       <Grid
         container
         spacing={1}
+        sx={{ justifyContent: "center", display: "flex" }}
       >
         {searchResult
           .map((item) => (
             <Grid key={item.productName} item xs={12} md={10}>
-              <Card alignment={alignment}
+              <Card
+                alignment={alignment}
                 score={item.score}
                 alcoholPercentage={item.alcoholPercentage}
                 description={item.description}

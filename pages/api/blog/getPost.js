@@ -1,17 +1,19 @@
 import clientPromise from "../../../lib/MongoClient";
+import { ObjectId } from "mongodb";
 
-const getPosts = async (req, res) => {
+const getPost = async (req, res) => {
   try {
     const client = await clientPromise;
     const db = client.db("alkulatorBlog");
+    const { url } = req.query;
 
-    const posts = await db.collection("posts").find({}).toArray();
+    const post = await db.collection("posts").findOne({ url: url });
 
-    res.json(posts);
+    res.json(post);
   } catch (e) {
     console.error(e);
     throw new Error(e).message;
   }
 };
 
-export default getPosts;
+export default getPost;
