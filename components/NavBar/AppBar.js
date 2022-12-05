@@ -20,6 +20,8 @@ import LiquorIcon from "@mui/icons-material/Liquor";
 import CalculateIcon from "@mui/icons-material/Calculate";
 import Link from "@mui/material/Link";
 
+import Breadcrumbs from "@mui/material/Breadcrumbs";
+
 import NextLink from "next/link";
 
 export default function SearchAppBar(props) {
@@ -28,6 +30,7 @@ export default function SearchAppBar(props) {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
+
       <AppBar position="sticky">
         <Toolbar>
           <IconButton
@@ -39,19 +42,28 @@ export default function SearchAppBar(props) {
             sx={{ mr: 2 }}>
             <MenuIcon />
           </IconButton>
+          <div role="presentation">
+            <Breadcrumbs aria-label="breadcrumb"
+              sx={{ display: { xs: "none", lg: "block" } }}>
+              <Link underline="hover" color="inherit" href="/">
+                Alkulator
+              </Link>
+              <Link
+                underline="hover"
+                color="inherit"
+                href={props.breadcrumbUrl}
+              >
+                {props.breadcrumbName}
+              </Link>
+
+            </Breadcrumbs>
+          </div>
           <Typography
             variant="h6"
             noWrap
             component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}>
-            Alkulator.no
-          </Typography>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ alignText: "center", flexGrow: 1, display: { xs: "none", sm: "none", lg: "block" } }}>
-            🥳<i> Mest rus for pengene! </i> 🎉
+            sx={{ textAlign: "right", fontWeight: "bolder", flexGrow: 1, display: { xs: "none", sm: "none", lg: "block" } }}>
+            Mest rus for pengene! 🍻
           </Typography>
           <Typography
             variant="h6"

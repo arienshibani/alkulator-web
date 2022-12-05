@@ -12,8 +12,6 @@ import { Box } from "@mui/material";
 export default function RenderBlog(blogPostsFromDB) {
   const [mode, setMode] = useState("light");
 
-  console.log(blogPostsFromDB);
-
   const theme = createTheme({
     palette: {
       mode,
@@ -38,7 +36,7 @@ export default function RenderBlog(blogPostsFromDB) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <ThemeProvider theme={theme}>
-        <AppBar setMode={setMode} mode={mode} />
+        <AppBar setMode={setMode} mode={mode} breadcrumbName="Blog" breadcrumbUrl="/blog" />
       </ThemeProvider>
 
       <Box sx={{

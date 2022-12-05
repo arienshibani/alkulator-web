@@ -6,6 +6,8 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 // Components
 import AppBar from "/components/NavBar/AppBar";
 import Grid from "/components/Grid/Grid";
+import { Typography } from "@mui/material";
+import { Box } from "@mui/material";
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => { } });
 
@@ -50,8 +52,17 @@ export default function App() {
 
         <ThemeProvider theme={theme}>
 
-          <AppBar setMode={setMode} mode={mode} />
+          <AppBar setMode={setMode} mode={mode} breadcrumbName="Søk" breadcrumbUrl="/"/>
+          <Box sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            padding: "5rem",
+            gap: "1rem",
 
+          }}>
+
+          </Box>
           <br />
           <br />
           <Grid />
